@@ -1,8 +1,6 @@
 from django.contrib import admin
-from django.contrib.admin import \
-    ModelAdmin
-from django import \
-    forms
+from django.contrib.admin import ModelAdmin
+from django import forms
 
 from .models import \
     Article, \
@@ -10,6 +8,7 @@ from .models import \
     Comment
 
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
 
 
 class PostAdminForm(forms.ModelForm):

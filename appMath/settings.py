@@ -65,10 +65,11 @@ WSGI_APPLICATION = 'appMath.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
+        'NAME': 'DatabaseName',
         'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1'
+        'PASSWORD': 'lty',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
 }
 
