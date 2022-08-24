@@ -19,7 +19,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'grappelli',
+    'grappelli',
     'ckeditor',
     'ckeditor_uploader',
     'django.contrib.admin',

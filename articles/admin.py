@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import \
     ModelAdmin
-from django.contrib.gis import \
+from django import \
     forms
 
 from .models import \
@@ -20,7 +20,7 @@ class PostAdminForm(forms.ModelForm):
 
 @admin.register(Article)
 class ArticleAdmin(ModelAdmin):
-    forms = PostAdminForm
+    form = PostAdminForm
 
 admin.site.register(Category)
 admin.site.register(Comment)
