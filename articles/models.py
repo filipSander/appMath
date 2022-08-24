@@ -32,7 +32,7 @@ class Article(models.Model):
         return days_passed + 'дня назад'
 
     def __str__(self):
-        return f'id: {self.id} | titile {self.title}'
+        return f'id: {self.id} | {self.title}'
 
     class Meta:
         verbose_name = 'Статью'
