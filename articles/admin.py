@@ -13,7 +13,7 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class PostAdminForm(forms.ModelForm):
-    text = forms.CharField(widget=CKEditorUploadingWidget())
+    text = forms.CharField(label="Текст статьи", widget=CKEditorUploadingWidget())
     class Meta:
         model = Article
         fields = '__all__'
