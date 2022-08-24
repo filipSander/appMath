@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+
 from django.contrib.auth.models import \
     User
 
@@ -19,8 +20,8 @@ class Category(models.Model):
 class Article(models.Model):
     title = models.CharField('Назавание статьи', max_length =150)
     text = models.TextField('Текст статьи')
-    pub_date = models.DateTimeField('Дата публикации')
-    views = models.IntegerField('Кол-во просмотров', null=0 )
+    pub_date = models.DateTimeField('Дата публикации', default=timezone.now())
+    views = models.IntegerField('Кол-во просмотров', default=0 )
     category = models.ManyToManyField(Category,'Категории')
 
     def was_publisher_recently(self):
@@ -31,7 +32,7 @@ class Article(models.Model):
         return days_passed + 'дня назад'
 
     def __str__(self):
-        return self.title
+        return f'id: {self.id} | titile {self.title}'
 
     class Meta:
         verbose_name = 'Статью'

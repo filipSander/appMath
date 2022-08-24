@@ -15,6 +15,7 @@ router.register(r'article', ArticleViewSet)
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', article_page),
 ]
 

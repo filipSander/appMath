@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django_filters.rest_framework import \
+    DjangoFilterBackend
 from rest_framework.viewsets import \
     ModelViewSet
 
@@ -14,3 +16,6 @@ def article_page(request):
 class ArticleViewSet(ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['title']
+
