@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ВОТ ТАК</title>
+</head>
+<body>
+{% for article in articles %}
+    {{ article.title }}
+<br>
+    {{ article.was_publisher_recently }}
+<br>
+
+<hr>
+{% endfor %}
+
+</body>
+</html>
