@@ -5,10 +5,12 @@ from rest_framework.routers import \
 
 from articles.views import \
     article_page, \
-    ArticleViewSet
+    ArticleViewSet, \
+    CommentViewSet
 
 router = SimpleRouter()
 router.register(r'article', ArticleViewSet)
+router.register(r'comment', CommentViewSet)
 
 
 urlpatterns = [
