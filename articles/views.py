@@ -13,18 +13,27 @@ from articles.permisions import \
 from articles.serializer import \
     ArticleSerializer, \
     CommentSerializer
-from sadmin.models import \
-    Link
+from sadmin.models import Link
+from libgravatar import Gravatar
 
 
 def article_page(request):
+    comments = Comment.objects.all()[:2]
+
+    for c in comments:
+        g = Gravatar(c.user.email)
+        c.user.email = g.get_image()
+
+    lastArticle = Article.objects.latest('id')
 
     data = {
-        'articles': Article.objects.all()[:4],
+        'articles': Article.objects.all()[1:4],
         'links': Link.objects.all(),
-        'Comments': Comment.objects.all()[:2]
-
+        'comments': comments,
+        'lastArticle': lastArticle,
+        'CommentCount': Comment.objects.filter(article_id=lastArticle.id).count()
     }
+
     return render(request, 'index.html', data)
 
 

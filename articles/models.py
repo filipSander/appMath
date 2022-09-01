@@ -17,8 +17,10 @@ class Category(models.Model):
 
 
 class Article(models.Model):
-    title = models.CharField('Назавание статьи', max_length=150)
+    title = models.CharField('Название статьи', max_length=150)
+    description = models.CharField('Описание', max_length=150, default='Описание не заданно')
     text = models.TextField('Текст статьи')
+    img = models.ImageField('Картинка', upload_to='uploads/', default='')
     pub_date = models.DateTimeField('Дата публикации', default=timezone.now())
     views = models.IntegerField('Кол-во просмотров', default=0)
     category = models.ManyToManyField(Category, 'Категории')

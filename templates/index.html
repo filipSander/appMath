@@ -25,10 +25,10 @@
 							<div class="col-4 col-12-medium">
 
 								<section>
-									<h2>Добро пожаловать в мой блог!</h2>
-									<p>Здесь вы найдете множество статей.. (Дописать)</p>
+									<h2>Остались вопросы?</h2>
+									<p>Если у вас остались вопросы вы можете связаться с нами</p>
 									<footer class="controls">
-										<a href="#" class="button">Обо мне..</a>
+										<a href="#" class="button">Контакты</a>
 									</footer>
 								</section>
 
@@ -36,18 +36,16 @@
 							<div class="col-4 col-6-medium col-12-small">
 
 								<section>
-									<h2>Последнии комментарии</h2>
+									<h2>Новые комментарии</h2>
 									<ul class="small-image-list">
-										<li>
-											<a href="#"><img src="images/pic2.jpg" alt="" class="left" /></a>
-											<h4>Jane Anderson</h4>
-											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo facilisis amet quis.</p>
-										</li>
-										<li>
-											<a href="#"><img src="images/pic1.jpg" alt="" class="left" /></a>
-											<h4>James Doe</h4>
-											<p>Vitae magna eget odio amet mollis justo facilisis amet quis. Sed sagittis consequat.</p>
-										</li>
+
+										{% for comment in comments %}
+											<li>
+												<a href="article/{{ comment.article_id }}/"><img src="{{ comment.user.email }}" alt="" class="left" /></a>
+												<h4>{{ comment.user.username }}</h4>
+												<p>{{ comment.text }}</p>
+											</li>
+										{% endfor %}
 									</ul>
 								</section>
 
@@ -81,29 +79,18 @@
 									sit amet consequat sed dolore.</p>
 									<ul class="big-image-list">
 
-										{% for link in links %}
+									{% for art in articles %}
+										<li>
+											<a href="/articles/{{ art.id }}"><img src="{{ art.img.url }}" alt="" class="left" /></a>
+											<h3>{{ art.title }}</h3>
+											<p>{{ art.description }}</p>
+										</li>
 
-										<li>
-											<a href="#"><img src="images/pic3.jpg" alt="" class="left" /></a>
-											<h3>Magna Gravida Dolore</h3>
-											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-											facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-											Maecenas eu arcu purus, phasellus fermentum elit.</p>
-										</li>
-										<li>
-											<a href="#"><img src="images/pic4.jpg" alt="" class="left" /></a>
-											<h3>Magna Gravida Dolore</h3>
-											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-											facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-											Maecenas eu arcu purus, phasellus fermentum elit.</p>
-										</li>
-										<li>
-											<a href="#"><img src= "images/pic5.jpg" alt="" class="left" /></a>
-											<h3>Magna Gravida Dolore</h3>
-											<p>Varius nibh. Suspendisse vitae magna eget et amet mollis justo
-											facilisis amet quis consectetur in, sollicitudin vitae justo. Cras
-											Maecenas eu arcu purus, phasellus fermentum elit.</p>
-										</li>
+									{% endfor %}
+
+
+
+
 									</ul>
 								</section>
 
@@ -111,23 +98,13 @@
 							<div class="col-6 col-12-medium">
 
 								<article class="blog-post">
-									<h2>Just another blog post</h2>
-									<a class="comments" href="#">33 comments</a>
-									<a href="#"><img src="images/pic6.jpg" alt="" class="top blog-post-image" /></a>
-									<h3>Magna Gravida Dolore</h3>
-									<p>Aenean non massa sapien. In hac habitasse platea dictumst.
-									Maecenas sodales purus et nulla sodales aliquam. Aenean ac
-									porttitor metus. In hac habitasse platea dictumst. Phasellus
-									blandit turpis in leo scelerisque mollis. Nulla venenatis
-									ipsum nec est porta rhoncus. Mauris sodales sed pharetra
-									nisi nec consectetur. Cras elit magna, hendrerit nec
-									consectetur in, sollicitudin vitae justo. Cras amet aliquet
-									Aliquam ligula turpis, feugiat id fermentum malesuada,
-									rutrum eget turpis. Mauris sodales sed pharetra nisi nec
-									consectetur. Cras elit magna, hendrerit nec consectetur
-									in sollicitudin vitae.</p>
+									<h2>Последняя статья</h2>
+									<a class="comments" href="/articles/{{ lastArticle.id }}">{{ CommentCount }}</a>
+									<a href="/articles/{{ lastArticle.id }}"><img src="{{ lastArticle.img.url }}" alt="" class="top blog-post-image" /></a>
+									<h3>{{ lastArticle.title }}</h3>
+									<p>{{ lastArticle.description }}</p>
 									<footer class="controls">
-										<a href="#" class="button">Continue Reading</a>
+										<a href="/articles/{{ lastArticle.id }}" class="button">Продолжить чтение</a>
 									</footer>
 								</article>
 
