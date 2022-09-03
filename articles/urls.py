@@ -4,9 +4,9 @@ from rest_framework.routers import \
     SimpleRouter
 
 from articles.views import \
-    article_page, \
+    index_page, \
     ArticleViewSet, \
-    CommentViewSet
+    CommentViewSet, article_detail
 
 router = SimpleRouter()
 router.register(r'article', ArticleViewSet)
@@ -14,7 +14,9 @@ router.register(r'comment', CommentViewSet)
 
 
 urlpatterns = [
-    path('', article_page),
+    path('', index_page),
+    path('article_number_<int:art_id>/', article_detail)
+
 ]
 
 urlpatterns += router.urls

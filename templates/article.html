@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+	{% load static %}
+
+{% block main %}
+
+<div id="main">
+		<div class="container">
+			<div class="row main-row">
+				<div class="col-8 col-12-medium">
+
+					<section>
+						<h2>{{ art.title }}</h2>
+						<img src="{{ art.img.url }}" alt="atr-image" style="width: 100%;height: auto;"/>
+						<div style="margin-top: 30px;" class="ck-content">
+							{{ art.text|safe }}
+						</div>
+					</section>
+
+				</div>
+				<div class="col-4 col-12-medium sidebar">
+
+					<section>
+						<h2>Новые комментарии</h2>
+						<ul class="small-image-list">
+
+							{% for comment in comments %}
+								<li>
+									<a href="article_number_{{ comment.article_id }}/"><img src="{{ comment.user.email }}" alt="" class="left" /></a>
+									<h4>{{ comment.user.username }}</h4>
+									<p>{{ comment.text }}</p>
+								</li>
+							{% endfor %}
+						</ul>
+					</section>
+
+					<div class="col-4 col-6-medium col-12-small">
+						<section>
+							<h2>Ссылки</h2>
+							<div>
+								<div class="row">
+									<div class="col-12 col-12-small">
+										<ul class="link-list">
+											{% for link in links %}
+												<li><a href="{{ link.url }}">{{ link.value }}</a></li>
+											{% endfor %}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	{% endblock main %}
+
+	{% block footer %}
+						<!-- Footer -->
+						<div id="footer-wrapper">
+							<div class="container">
+								<div class="row">
+									<div class="col-12">
+
+										<div id="copyright">
+											&copy; prikladnayamatematika.ru | All rights reserved.
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+				</div>
+				<!-- Scripts -->
+					<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+					<script type="text/javascript" src="{% static 'ckeditor/ckeditor/text_styles.js' %}"></script>
+					<script src="{% static 'assets/js/browser.min.js' %}"></script>
+					<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+					<script src="{% static 'assets/js/main.js' %}"></script>
+			</body>
+		</html>
+	{% endblock footer %}
+<!--End div main </div>-->
+

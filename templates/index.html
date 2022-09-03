@@ -3,115 +3,109 @@
 	{% load static %}
 
 {% block main %}
-			<!-- Banner -->
-				<div id="banner-wrapper">
-					<div class="container">
+<!-- Banner -->
+<div id="banner-wrapper">
+	<div class="container">
 
-						<div id="banner">
-							<img src=" {% static 'images/circle-red.png' %}">
-							<img src=" {% static 'images/circle-pink.png' %}">
-							<img src=" {% static 'images/circle-orange.png' %}">
-							<img src=" {% static 'images/circle-yellow.png' %}">
-						</div>
+		<div id="banner">
+			<img src=" {% static 'images/circle-red.png' %}">
+			<img src=" {% static 'images/circle-pink.png' %}">
+			<img src=" {% static 'images/circle-orange.png' %}">
+			<img src=" {% static 'images/circle-yellow.png' %}">
+		</div>
 
-					</div>
-				</div>
+	</div>
+</div>
 
-			<!-- Main -->
-				<div id="main">
+<!-- Main -->
+<div id="main">
 
-						<div class="container">
-						<div class="row main-row">
-							<div class="col-4 col-12-medium">
+		<div class="container">
+		<div class="row main-row">
+			<div class="col-4 col-12-medium">
 
-								<section>
-									<h2>Остались вопросы?</h2>
-									<p>Если у вас остались вопросы вы можете связаться с нами</p>
-									<footer class="controls">
-										<a href="#" class="button">Контакты</a>
-									</footer>
-								</section>
+				<section>
+					<h2>Остались вопросы?</h2>
+					<p>Если у вас остались вопросы вы можете связаться с нами</p>
+					<footer class="controls">
+						<a href="#" class="button">Контакты</a>
+					</footer>
+				</section>
 
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
+			</div>
+			<div class="col-4 col-6-medium col-12-small">
 
-								<section>
-									<h2>Новые комментарии</h2>
-									<ul class="small-image-list">
+				<section>
+					<h2>Новые комментарии</h2>
+					<ul class="small-image-list">
 
-										{% for comment in comments %}
-											<li>
-												<a href="article/{{ comment.article_id }}/"><img src="{{ comment.user.email }}" alt="" class="left" /></a>
-												<h4>{{ comment.user.username }}</h4>
-												<p>{{ comment.text }}</p>
-											</li>
-										{% endfor %}
-									</ul>
-								</section>
+						{% for comment in comments %}
+							<li>
+								<a href="article_number_{{ comment.article_id }}/"><img src="{{ comment.user.email }}" alt="" class="left" /></a>
+								<h4>{{ comment.user.username }}</h4>
+								<p>{{ comment.text }}</p>
+							</li>
+						{% endfor %}
+					</ul>
+				</section>
 
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
+			</div>
+			<div class="col-4 col-6-medium col-12-small">
 
-								<section>
-									<h2>Ссылки</h2>
-									<div>
-										<div class="row">
-											<div class="col-12 col-12-small">
-												<ul class="link-list">
-													{% for link in links %}
-														<li><a href="{{ link.url }}">{{ link.value }}</a></li>
-													{% endfor %}
-												</ul>
-											</div>
-										</div>
-									</div>
-								</section>
-
-							</div>
-							<div class="col-6 col-12-medium">
-
-								<section>
-									<h2>Новые статьи</h2>
-									<p>Duis neque nisi, dapibus sed mattis quis, rutrum et accumsan.
-									Suspendisse nibh. Suspendisse vitae magna eget odio amet mollis
-									justo facilisis quis. Sed sagittis mauris amet tellus gravida
-									lorem ipsum dolor sit amet consequat blandit lorem ipsum dolor
-									sit amet consequat sed dolore.</p>
-									<ul class="big-image-list">
-
-									{% for art in articles %}
-										<li>
-											<a href="/articles/{{ art.id }}"><img src="{{ art.img.url }}" alt="" class="left" /></a>
-											<h3>{{ art.title }}</h3>
-											<p>{{ art.description }}</p>
-										</li>
-
+				<section>
+					<h2>Ссылки</h2>
+					<div>
+						<div class="row">
+							<div class="col-12 col-12-small">
+								<ul class="link-list">
+									{% for link in links %}
+										<li><a href="{{ link.url }}">{{ link.value }}</a></li>
 									{% endfor %}
-
-
-
-
-									</ul>
-								</section>
-
-							</div>
-							<div class="col-6 col-12-medium">
-
-								<article class="blog-post">
-									<h2>Последняя статья</h2>
-									<a class="comments" href="/articles/{{ lastArticle.id }}">{{ CommentCount }}</a>
-									<a href="/articles/{{ lastArticle.id }}"><img src="{{ lastArticle.img.url }}" alt="" class="top blog-post-image" /></a>
-									<h3>{{ lastArticle.title }}</h3>
-									<p>{{ lastArticle.description }}</p>
-									<footer class="controls">
-										<a href="/articles/{{ lastArticle.id }}" class="button">Продолжить чтение</a>
-									</footer>
-								</article>
-
+								</ul>
 							</div>
 						</div>
 					</div>
-					{% endblock main %}
+				</section>
 
-				</div>
+			</div>
+			<div class="col-6 col-12-medium">
 
+				<section>
+					<h2>Новые статьи</h2>
+					<p>Duis neque nisi, dapibus sed mattis quis, rutrum et accumsan.
+					Suspendisse nibh. Suspendisse vitae magna eget odio amet mollis
+					justo facilisis quis. Sed sagittis mauris amet tellus gravida
+					lorem ipsum dolor sit amet consequat blandit lorem ipsum dolor
+					sit amet consequat sed dolore.</p>
+					<ul class="big-image-list">
+
+					{% for art in articles %}
+						<li>
+							<a href="article_number_{{ art.id }}"><img src="{{ art.img.url }}" alt="" class="left" /></a>
+							<h3>{{ art.title }}</h3>
+							<p>{{ art.description }}</p>
+						</li>
+
+					{% endfor %}
+					</ul>
+				</section>
+
+			</div>
+			<div class="col-6 col-12-medium">
+
+				<article class="blog-post">
+					<h2>Последняя статья</h2>
+					<a class="comments" href="article_number_{{ last_article.id }}">{{ CommentCount }}</a>
+					<a href="article_number_{{ last_article.id }}"><img src="{{ last_article.img.url }}" alt="" class="top blog-post-image" /></a>
+					<h3>{{ last_article.title }}</h3>
+					<p>{{ last_article.description }}</p>
+					<footer class="controls">
+						<a href="article_number_{{ last_article.id }}" class="button">Продолжить чтение</a>
+					</footer>
+				</article>
+
+			</div>
+		</div>
+	</div>
+	{% endblock main %}
+<!--End div main </div>-->
